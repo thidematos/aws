@@ -1,0 +1,77 @@
+doctype html
+html(lang="pt-br")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title O Coliseu - Projetos
+        link(rel="shortcut icon", href="./assets/favicon.ico", type="image/x-icon")
+        link(rel="stylesheet", href="./styles/style.css")
+        link(rel="stylesheet", href="./styles/lightbox.css")
+        script(defer, src="./js/lightbox-plus-jquery.js") 
+        script(src="https://kit.fontawesome.com/1d41b3ab2c.js", crossorigin="anonymous")
+        script(src="./js/projetos.js") 
+    body.w-screen.min-screen.flex.flex-col.justify-start.items-center.bg-sixty
+        header.flex.flex-row.justify-center.items-center.w-full.gap-4(class="h-[15vh]") 
+            img.drop-shadow-lg(src="./../assets/logo.png", alt="", class="w-[30%] md:w-[15%] xl:w-[10%]")
+            div.flex.flex-col.justify-center.items-center
+                h1.font-bodoni.font-bold.text-ten.text-3xl.drop-shadow-lg(class="md:text-4xl") O Coliseu
+                h2.font-garamond.text-contrast.text-lg.drop-shadow-lg(class="md:text-xl") D. E. Salvino Mármores ME.
+        main.flex.flex-col.justify-center.items-center.gap-6.w-full.py-6
+            div.flex.flex-col.justify-center.items-center.gap-6(class='w-[80%]')
+                h3.bg-white.font-garamond.text-ten.text-3xl.px-4.py-2.shadow-lg PROJETOS
+                p.text-contrast.font-montserrat.text-lg.text-center Deixe-se inspirar pela beleza de cada detalhe.
+            div.flex.flex-row.justify-center.flex-wrap.items-center.bg-sixty.p-4.w-full.gap-6 
+                each post in posts 
+                    div.post__container.flex.flex-col.justify-center.items-center.bg-white.shadow-xl.py-4.gap-2(class='w-[90%] md:w-[45%] xl:w-[25%]')
+                        div.flex.flex-row.justify-around.items-center.w-full
+                            h3.font-garamond.text-2xl.font-bold.text-ten(class="xl:text-3xl")= post.title 
+                            h3.font-garamond.text-lg.text-contrast(class="xl:text-2xl")= post.material 
+                        div.flex.flex-col.justify-center.items-center
+                            a.w-full.flex.flex-col.justify-center.items-center(href=`./../uploads/${post.imgs[0]}`, data-lightbox="Projetos")
+                                img.rounded-lg.border-2.border-solid.border-ten(src=`./../uploads/${post.imgs[0]}`, alt="", class="w-[90%] xl:w-[75%]")
+                        div.flex.flex-row.justify-around.items-center.font-montserrat.text-contrast.w-full(class="xl:text-lg")
+                            h4= post.user.name
+                            h4= `${`${post.createdAt.getDate()}`.padStart(2, '0')}/${`${post.createdAt.getMonth() + 1}`.padStart(2, '0')}/${post.createdAt.getFullYear()}`
+                            h4= post.local
+                        div.details__btn.flex.flex-row.justify-center.items-center.gap-3(data-status="0")
+                            p.font-garamond.text-contrast.text-lg(class="xl:text-xl") DETALHES 
+                            i.btn__awesome.text-ten.text-lg(class="fa-solid fa-square-plus")
+                        div.post__description.scale-y-0.flex.flex-col.justify-center.items-center.font-montserrat.tracking-wider.text-contrast.duration-700.absolute.origin-top(class="xl:text-xl")
+                            div= post.description
+            ol.flex-row.justify-center.items-center.flex-nowrap.overflow-x-scroll.font-garamond.gap-12.text-lg.font-bold.text-center(class=`w-[90%] ${pages.length > 1 ? 'flex' : 'hidden'}`)
+                each page in pages
+                    a.rounded-full.p-2.border.border-solid.border-ten(href=`/projetos?page=${page}`, class=`w-[45px] h-[45px] ${page == activePage ? 'bg-ten text-white' : 'bg-white text-contrast'}`)=page
+            a(href="/").font-garamond.text-sm.text-ten.underline.decoration-2.underline.offset-1 RETORNAR À PÁGINA INICIAL
+        footer#section-6.bg-white.section.w-screen.min-h-screen.flex.flex-col.justify-start.items-center.gap-6.pb-10(class="md:flex-row md:min-h-fit md:justify-center xl:pb-12 xl:items-center lg:min-h-screen")
+            div.flex.flex-col.justify-center.items-center.px-8.text-contrast(class="md:w-2/5 md:pr-0")
+                h3.font-garamond.py-4.text-3xl.text-center.border-b.border-solid.border-ten.drop-shadow-md(class="w-[80%] xl:text-3xl") Entre em contato 
+                p.font-montserrat.text-contrast.text-sm.mt-2 Clique e acesse diretamente nossos contatos 
+                ul.flex.flex-col.justify-center.items-start.gap-6.mt-8 
+                    li.flex.flex-col.justify-center.items-start.gap-3
+                        h3.font-bodoni.font-bold.text-lg.drop-shadow-md(class="xl:text-lg") Endereço
+                        a.flex.flex-row.justify-center.items-center.gap-2.font-montserrat.bg-sixty.text-contrast.p-2.text-sm(href="https://goo.gl/maps/iec2MGTLKrw71iRNA" target="_blank", class="xl:text-sm") 
+                            address Av. Emilio Granato, nº 6274 - Enseada, São Sebastião, São Paulo
+                            i.ml-1.fa-solid.fa-up-right-from-square.text-tenAlu.text-sm(class="xl:text-sm")
+                    li.flex.flex-col.justify-center.items-start.gap-3 
+                        h3.font-bodoni.font-bold.text-lg.drop-shadow-md(class="xl:text-lg") Telefone
+                        a.font-montserrat.bg-sixty.text-contrast.p-2(href="tel:012991592479", class="xl:text-sm") (12) 99159-2479
+                            i.ml-1.fa-solid.fa-up-right-from-square.text-tenAlu(class="xl:text-sm")
+                    li.flex.flex-col.justify-center.items-start.gap-3 
+                        h3.font-bodoni.font-bold.text-lg.drop-shadow-md(class="xl:text-lg") Email
+                        a.font-montserrat.bg-sixty.text-contrast.p-2(href="mailto:marmorariaocoliseu@hotmail.com", class="xl:text-sm") marmorariaocoliseu@hotmail.com
+                            i.ml-1.fa-solid.fa-up-right-from-square.text-tenAlu(class="xl:text-sm")
+                    li.flex.flex-col.justify-center.items-start.gap-3
+                        h3.font-bodoni.font-bold.text-lg.drop-shadow-md(class="xl:text-lg") Social
+                        div.flex.flex-row.justify-start.items-center.gap-2
+                            a(href="https://wa.me/5512991592479", target="_blank", class="w-[10%] xl:w-[7%]")
+                                img(src="./assets/wpp.png", alt="")
+                            a(href="https://www.instagram.com/marmorariaocoliseu/", target="_blank",rel="author", class="w-[10%] xl:w-[7%]")
+                                img.w-full(src="./assets/instagram.png", alt="")     
+                            i.ml-1.fa-solid.fa-up-right-from-square.text-tenAlu 
+            div.w-screen.flex.flex-col.items-start.justify-center.gap-4(class="md:w-2/5")
+                h3.self-start.px-10.font-bodoni.font-bold.text-lg.text-contrast.drop-shadow-md(class="xl:text-3xl xl:font-normal") Localização 
+                div#map.h-96.drop-shadow-md.self-center(class="w-[90%]")
+        script(src="./js/maps.js")
+        script(async, src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZ3xtY02F5VuPnEMt33YW8zxiMTSEbPME&callback=initMap")
+        
+        
