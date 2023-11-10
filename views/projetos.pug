@@ -30,14 +30,13 @@ html(lang="pt-br")
                             a.w-full.flex.flex-col.justify-center.items-center(href=`./../uploads/${post.imgs[0]}`, data-lightbox="Projetos")
                                 img.rounded-lg.border-2.border-solid.border-ten(src=`./../uploads/${post.imgs[0]}`, alt="", class="w-[90%] xl:w-[75%]")
                         div.flex.flex-row.justify-around.items-center.font-montserrat.text-contrast.w-full(class="xl:text-lg")
-                            h4= post.user.name
                             h4= `${`${post.createdAt.getDate()}`.padStart(2, '0')}/${`${post.createdAt.getMonth() + 1}`.padStart(2, '0')}/${post.createdAt.getFullYear()}`
                             h4= post.local
                         div.details__btn.flex.flex-row.justify-center.items-center.gap-3(data-status="0")
                             p.font-garamond.text-contrast.text-lg(class="xl:text-xl") DETALHES 
                             i.btn__awesome.text-ten.text-lg(class="fa-solid fa-square-plus")
                         div.post__description.scale-y-0.flex.flex-col.justify-center.items-center.font-montserrat.tracking-wider.text-contrast.duration-700.absolute.origin-top(class="xl:text-xl")
-                            div= post.description
+                            p.text-center= post.description
             ol.flex-row.justify-center.items-center.flex-nowrap.overflow-x-scroll.font-garamond.gap-12.text-lg.font-bold.text-center(class=`w-[90%] ${pages.length > 1 ? 'flex' : 'hidden'}`)
                 each page in pages
                     a.rounded-full.p-2.border.border-solid.border-ten(href=`/projetos?page=${page}`, class=`w-[45px] h-[45px] ${page == activePage ? 'bg-ten text-white' : 'bg-white text-contrast'}`)=page
