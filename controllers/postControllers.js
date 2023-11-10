@@ -4,7 +4,6 @@ const Post = require('./../model/postModel');
 const catchAsync = require('./../utils/catchAsync');
 const mathPage = require('./../utils/mathPages');
 const sharp = require('sharp');
-const { async } = require('regenerator-runtime');
 
 //Multer
 /*
