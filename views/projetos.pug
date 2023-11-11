@@ -23,7 +23,7 @@ html(lang="pt-br")
             div.flex.flex-row.justify-center.flex-wrap.items-center.bg-sixty.p-4.w-full.gap-6 
                 each post in posts 
                     div.post__container.flex.flex-col.justify-center.items-center.bg-white.shadow-xl.p-3.gap-2(class='w-[90%] md:w-[45%] xl:w-[25%]')
-                        div.flex.flex-row.justify-around.items-center.w-full
+                        div.flex.flex-row.justify-around.items-center.w-full.text-center
                             h3.font-garamond.text-xl.font-bold.text-ten(class="xl:text-3xl")= post.title 
                             h3.font-garamond.text-lg.text-contrast(class="xl:text-2xl")= post.material 
                         div.flex.flex-col.justify-center.items-center
