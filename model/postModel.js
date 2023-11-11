@@ -12,7 +12,7 @@ const postSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Uma nova postagem deve ter um tipo de material!'],
     minlength: [1, 'Um material não pode ter menos que uma letra!'],
-    maxlength: [20, 'Um material não pode ter mais que 20 letras!'],
+    maxlength: [40, 'Um material não pode ter mais que 20 letras!'],
   },
   local: {
     type: String,
