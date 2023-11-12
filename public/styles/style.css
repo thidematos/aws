@@ -2625,6 +2625,11 @@ input:checked + .slider:before {
   font-family: EB Garamond;
 }
 
+.hover\:bg-tenAlu:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(25 167 206 / var(--tw-bg-opacity));
+}
+
 .hover\:underline:hover{
   text-decoration-line: underline;
 }
