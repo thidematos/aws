@@ -22,6 +22,8 @@ const generateHTML = (message) => {
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
 
+  event.submitter.disabled = true;
+
   if (!inputImg.files[0]) return generateHTML('Por favor, insira uma foto!');
 
   const form = new FormData();
@@ -48,5 +50,6 @@ form.addEventListener('submit', async (event) => {
     console.log(data);
     body.insertAdjacentHTML('beforeend', generateHTML(data.error.message));
     setTimeout(() => document.querySelector('.pop-up').remove(), 2000);
+    event.submitter.disabled = false;
   }
 });
